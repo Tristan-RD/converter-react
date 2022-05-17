@@ -1,0 +1,180 @@
+/**
+ * __FONTS__
+ *
+ * Définit les polices de caractères
+ *
+ * @see __VARIABLES__
+ * Les appels aux différentes polices sont variabilisés
+ * selon leur utilisation (serif, sans)
+ */
+ @font-face {
+  font-family: "Spartan";
+  font-style: normal;
+  font-weight: 300;
+  src: url("./fonts/spartan/Spartan-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Spartan";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./fonts/spartan/Spartan-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Spartan";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./fonts/spartan/Spartan-Bold.ttf") format("truetype");
+}
+
+/**
+ * __VARIABLES__
+ *
+ * Syntaxe : `--my-variable: value`
+ * @usage `property: var(--my-variable)`
+ */
+:root {
+  --color-primary: #bb5432;
+  --color-alternative: #f1c5b6;
+  --color-light: #FFF;
+
+  /* --font-sans: "League Spartan", sans-serif; */
+  --font-sans: "Spartan", cursive;
+
+  --delay-fast: .2s;
+  --delay-slow: 1s;
+
+  --gutter: 1rem;
+  --list-item-height: 3rem;
+}
+
+/**
+ * __BASE__
+ *
+ * Définit le style de base de l'application
+ * (balises `html`, `body`…)
+ */
+html,
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  line-height: 1.5rem;
+  min-height: 100vh;
+}
+
+body {
+  background: var(--color-alternative);
+  color: var(--color-primary);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  margin: 0;
+}
+
+/**
+ * __LAYOUT__
+ *
+ * Définit la mise en page générale du site (grid system)
+ */
+body {
+  align-content: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+.converter {
+  background: var(--color-light);
+  color: var(--color-primary);
+  margin-top: 2rem;
+  max-width: 480px;
+  width: 90vw;
+}
+
+
+/**
+ * __MAIN__
+ *
+ * Définit le style spécifique du corps de page (<main />)
+ */
+.currencies {
+  height: calc(var(--list-item-height) * 6);
+  overflow: auto;
+  padding-top: var(--gutter);
+}
+
+.currencies h2,
+.currencies input,
+.currencies li {
+  border-bottom: 1px solid var(--color-alternative);
+  height: var(--list-item-height);
+  line-height: var(--list-item-height);
+  padding: 0 var(--gutter);
+}
+
+.currencies h2 {
+  font-size: 1.2rem;;
+  font-weight: 700;
+}
+
+.currencies__search {
+  border: 0;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: var(--gutter);
+  padding-top: calc(var(--gutter) * 1.5);
+  width: 100%;
+}
+.currencies__search::placeholder {
+  color: var(--color-alternative);
+}
+
+.currency {
+  background-color: var(--color-light);
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color var(--delay-slow) linear;
+}
+.currency:hover {
+  background-color: var(--color-alternative);
+  transition: background-color var(--delay-fast) linear;
+}
+
+.result {
+  padding: calc(var(--gutter) * 2);
+  text-align: center;
+}
+.result strong {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--gutter);
+}
+.result span {
+  font-size: 1.5rem;
+}
+
+/**
+ * __FOOTER__
+ *
+ * Définit le style spécifique du pied de page (<footer />)
+ */
+.footer {
+  background: var(--color-alternative);
+  padding-top: calc(var(--gutter) * 2);
+  text-align: center;
+}
+.footer span {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 3rem;
+  transition: all var(--delay-slow) linear;
+}
+.footer span:hover {
+  transform: scale(1.5);
+  transition: all var(--delay-fast) linear;
+}

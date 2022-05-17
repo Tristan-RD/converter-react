@@ -1,0 +1,24 @@
+
+
+/**
+ * __HEADER__
+ *
+ * Définit le style spécifique de l'en-tête (<header />)
+ */
+ .header {
+  background: var(--color-primary);
+  color: var(--color-light);
+  padding: calc(var(--gutter) * 3);
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: var(--gutter);
+}
+
+p {
+  font-size: 1.5rem;
+  font-weight: 300;
+}

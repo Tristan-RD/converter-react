@@ -1,0 +1,16 @@
+.toggler {
+    background: var(--color-alternative);
+    border: 3px solid var(--color-light);
+    border-radius: 50%;
+    color: var(--color-primary);
+    display: block;
+    font-size: 1.5rem;;
+    height: 3rem;
+    margin: -24px auto;
+    transition: transform var(--delay-fast) linear;
+    width: 3rem;
+  }
+  
+  .toggler--open {
+    transform: rotate(-90deg);
+  }

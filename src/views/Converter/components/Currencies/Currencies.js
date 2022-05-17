@@ -1,25 +1,13 @@
 import CurrenciesItem from './CurrenciesItem';
+import CurrenciesSearch from './CurrenciesSearch';
 
-function Currencies({ currencies, setCurrency }) {
-
-  // MVVM remplace les instructions ci-dessous
-    // Model → axios
-    // ViewModel → variables d'état : déclaration + update
-
-  // const [currenciesData, setCurrenciesData] = useState([]);
-
-  // useEffect(() => {
-  //   axios
-  //     .get(API_URL_SYMBOLS)
-  //     .then(({ data }) => {
-  //       setCurrenciesData(Object.values(data.symbols));
-  //     })
-  //     .catch((error) => console.error(error));
-  // }, []); // seulement au 1er rendu
-
+function Currencies({ currencies, setCurrency, query, setQuery }) {
   return (
     <div className='currencies'>
-      <h2>Currencies</h2>
+      <CurrenciesSearch
+        query={query}
+        setQuery={setQuery}
+      />
 
       <ul>
         {currencies.map((currency) => (
@@ -32,7 +20,6 @@ function Currencies({ currencies, setCurrency }) {
       </ul>
     </div>
   );
-
 };
 
 export default Currencies;

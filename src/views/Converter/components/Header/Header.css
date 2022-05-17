@@ -22,3 +22,14 @@ p {
   font-size: 1.5rem;
   font-weight: 300;
 }
+
+.header__input {
+  background-color: transparent;
+  border: none;
+  color: var(--color-light);
+  direction: rtl;
+  font: inherit;
+  margin-right: 0.5rem;
+  max-width: 144px;
+  text-align: right;
+}

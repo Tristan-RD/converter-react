@@ -1,7 +1,6 @@
 import React from 'react';
 
 function CurrenciesItem({ currency, setCurrency }) {
-
   return (
     <li
       className='currency'

@@ -1,58 +1,69 @@
-import Header from './components/Header/Header.js';
-import Result from './components/Result/Result.js';
-import Currencies from './components/Currencies/Currencies.js';
-import { useEffect, useState } from 'react';
-import Toggler from '../../components/Toggler/Toggler.js';
+import { useState, useEffect } from 'react';
 
-import useConverterViewModel from './ConverterViewModel.js';
+import Header from './components/Header/Header';
+import Currencies from './components/Currencies/Currencies';
+import Result from './components/Result/Result';
+import Toggler from '../../components/ui/Toggler/Toggler';
 
+import useConverterViewModel from './ConverterViewModel';
+
+// const Converter = () => {};
 
 function Converter() {
 
-  const [open, setOpen] = useState(true);
+  const [open, toggleOpen] = useState(true);
 
   const handleClick = () => {
-    setOpen(!open);
-  }
+    toggleOpen(!open);
+  };
 
-  const {    
+  const {
     error,
     currenciesData,
     currencyData,
+    query,
+    amount,
     getCurrencies,
     convertToCurrency,
+    searchCurrencies,
+    changeAmount,
   } = useConverterViewModel();
 
+  // au chargement du composant, on récupère les devises
   useEffect(() => {
     getCurrencies();
   }, []);  // se déclenche UNE seule fois, à l'initialisation du composant
 
-    // on gère les erreurs
-    useEffect(() => {
-      if (error) {
-        console.error(error);
-      }
-    }, [error]); // se déclenche si la valeur de 'error' change
-    
+  // on gère les erreurs
+  useEffect(() => {
+    if (error) {
+      console.error(error);
+    }
+  }, [error]); // se déclenche si la valeur de 'error' change
+
   return (
-      <div className='converter'>
-        <Header />
+    <div className='converter'>
+      <Header amount={amount} setAmount={changeAmount} />
 
-        <main className='main'>
-          <Toggler isOpen={open} toggle={handleClick}/>
+      <main className='main'>
+        <Toggler toggle={handleClick} isOpen={open} />
 
-          {/* on utilise " vue conditionelle " en JSX */}
-          {/* condition && on fait qq chose */}
-          {open && (
+        {/* on utilise la « vue conditionnelle » en JSX */}
+        {/* condition && on fait qq chose */}
+        {open && (
           <Currencies
             currencies={currenciesData}
             setCurrency={convertToCurrency}
-          />)}
+            query={query}
+            setQuery={searchCurrencies}
+          />
+        )}
 
-          <Result currency={currencyData}/>
-        </main>
-      </div>
+        <Result currency={currencyData} />
+      </main>
+    </div>
   );
+
 }
 
 export default Converter;

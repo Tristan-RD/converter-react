@@ -1,0 +1,20 @@
+.App__logo {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 2rem 0;
+    max-width: 480px;
+    text-align: center;
+    width: 90vw;
+}
+
+.App__nav {
+        max-width: 480px;
+        text-align: center;
+        width: 90vw;
+}
+      
+.App__nav .is-active {
+    border-bottom: 1px solid;
+    color: rgb(255, 115, 0);
+    font-weight: 700;
+  }
